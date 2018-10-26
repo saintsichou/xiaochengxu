@@ -1,0 +1,76 @@
+<template>
+	<view class="search">
+        <view class="main">
+            <view class="content">
+                <view class="icon-search iconfont icon"></view>
+                <input placeholder="大家都在搜  {{title}}" bindinput="bindKeyInput"/>
+                <view class="text" @tap="search()">搜索</view>
+            </view>
+        </view>
+		
+	</view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class search extends wepy.component {
+	data = {
+		inputValue: ''
+	}
+	props = {
+		title: String,
+	}
+	methods = {
+		//搜索按钮
+		search(){
+			console.log('1111', this.inputValue);
+			this.$emit('searchFn', this.inputValue);
+		},
+		//输入字符
+		bindKeyInput(e){
+			this.inputValue =  e.detail.value;
+			console.log('2222', this.inputValue);
+			this.$apply();
+		}
+	}
+}
+</script>
+<style lang="less">
+	.search{
+		padding: 10rpx 0 10rpx 0;
+		height: 70rpx;
+		background: #fff;
+		font-size: 30rpx;
+        color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        .main{
+            padding: 0 120rpx 0 30rpx;
+        }
+		.content{
+			background: #F9F9F9;
+			border-radius: 40rpx;
+			padding-left: 80rpx;
+			position: relative;
+			>.icon{
+				position: absolute;
+				left: 26rpx;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			input{
+				display: block;
+				height: 70rpx;
+			}
+			.text{
+				position: absolute;
+				right: -90rpx;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+</style>

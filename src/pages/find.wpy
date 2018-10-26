@@ -1,0 +1,21 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+    Hello realgo！我是find页面
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class find extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

@@ -1,0 +1,46 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+    <search :title="searchTitle" @searchFn.user="opertionFn"></search>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  import search from '../components/search';
+  import api from './../api/api.js'
+  export default class Index extends wepy.page {
+     config = {
+      navigationBarTitleText: '李二狗首页',
+    }
+    components = {
+      search: search   
+    }
+    data ={
+      searchTitle: '李二狗'
+    }
+    methods = {
+        //搜索
+      opertionFn(data, evt){
+          console.log('operation');
+          console.log(data);
+      },
+    }
+    //创建请求list方法
+      async getAdList() {
+        const json = await api.list({
+          query: {}
+        });
+        if (json.data.code == 0) {
+          this.adList = json.data.list;
+          this.$apply();
+        } else {}
+      }
+    onLoad() {
+      console.log('onLoad')
+      // this.getAdList() 调用方法
+    }
+  }
+</script>

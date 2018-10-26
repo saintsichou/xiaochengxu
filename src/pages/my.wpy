@@ -1,0 +1,21 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+    Hello realgo！我是个人中心
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class my extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>
